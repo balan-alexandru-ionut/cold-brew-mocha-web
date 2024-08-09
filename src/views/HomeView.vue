@@ -4,21 +4,26 @@ import { onMounted } from 'vue'
 onMounted(() => {
   const videoWall = document.querySelector('video')
   if (videoWall) {
-    videoWall.playbackRate = 0.6
+    videoWall.playbackRate = 0.65
   }
 })
 </script>
 
 <style scoped>
 video {
-  filter: grayscale(1) blur(1px);
+  filter: brightness(0.5);
 }
 </style>
 
 <template>
   <main>
-    <div class="hero">
-      <video src="../assets/videos/2834010-hd_1920_1080_30fps.mp4" autoplay muted loop></video>
+    <div class="hero min-h-screen">
+      <video
+        class="min-h-full min-w-full object-cover"
+        src="../assets/videos/wallvideo.mp4"
+        autoplay
+        muted
+      ></video>
       <div class="hero-content text-center">
         <div class="max-w-md">
           <h1 class="text-5xl font-bold text-primary">

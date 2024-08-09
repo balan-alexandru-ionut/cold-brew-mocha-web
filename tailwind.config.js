@@ -12,11 +12,11 @@ export default {
       {
         mocha: {
           primary: '#faf7ff',
-          secondary: '#8685ef',
+          secondary: '#8685EF',
           accent: '#ee6c4d',
           neutral: '#faf7ff',
-          'base-content': '#121212',
-          'base-100': '#121212'
+          'base-content': '#000000',
+          'base-100': '#000000'
         }
       }
     ]
