@@ -6,7 +6,7 @@ onMounted(() => {
   const navbar = document.querySelector('nav')
 
   window.addEventListener('scroll', (e) => {
-    window.scrollY > 0 ? (scrollLevel = 1) : (scrollLevel = 0)
+    window.scrollY > 10 ? (scrollLevel = 1) : (scrollLevel = 0)
   })
 
   setInterval(() => {
