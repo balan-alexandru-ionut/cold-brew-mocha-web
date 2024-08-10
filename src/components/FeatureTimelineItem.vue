@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { FeatureItem, TimelineDisplaySide } from '@/types/FeatureItem'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps<{
   featureTimelineItem: FeatureItem
@@ -15,6 +16,12 @@ const timelineItemClasses = computed(() => ({
 
 const implementedIconClass = computed(() => ({
   'text-secondary': props.featureTimelineItem.implemented,
+  'text-primary': !props.featureTimelineItem.implemented,
+  'fa-spin': props.featureTimelineItem.icon === faSpinner
+}))
+
+const implementedTitleClass = computed(() => ({
+  'text-secondary': props.featureTimelineItem.implemented,
   'text-primary': !props.featureTimelineItem.implemented
 }))
 
@@ -26,12 +33,17 @@ const implementedHrClass = computed(() => ({
 
 <template>
   <li>
-    <div class="timeline-middle text-primary">
-      <FontAwesomeIcon :icon="featureTimelineItem.icon" :class="implementedIconClass" />
+    <div class="timeline-middle mb-2 text-primary">
+      <FontAwesomeIcon
+        :icon="featureTimelineItem.icon"
+        :class="implementedIconClass"
+        class="fa-lg"
+        style="--fa-animation-duration: 3s"
+      />
     </div>
-    <div :class="timelineItemClasses" class="mb-10 text-primary">
+    <div :class="timelineItemClasses" class="mb-10 mt-2 text-primary">
       <span class="font-mono italic">{{ featureTimelineItem.publishedInVersion }}</span>
-      <h4 :class="implementedIconClass" class="text-lg font-black">
+      <h4 :class="implementedTitleClass" class="text-lg font-black">
         {{ featureTimelineItem.title }}
       </h4>
       <p>{{ featureTimelineItem.description }}</p>

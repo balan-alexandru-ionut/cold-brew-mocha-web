@@ -1,4 +1,4 @@
-import { faCircleCheck, type IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, type IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 export class FeatureItem {
   implemented: boolean
@@ -21,7 +21,7 @@ export class FeatureItem {
     this.timelineDisplaySide = timelineDisplaySide
     implemented ? (this.implemented = implemented) : (this.implemented = false)
     description ? (this.description = description) : (this.description = undefined)
-    icon ? (this.icon = icon) : (this.icon = faCircleCheck)
+    icon ? (this.icon = icon) : (this.icon = faSpinner)
   }
 
   static builder(
