@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   videoSource: String
@@ -18,7 +19,7 @@ function getVideoUrl(): URL {
 </script>
 
 <template>
-  <div class="hero min-h-screen">
+  <div class="hero -mt-16 min-h-screen">
     <video
       class="min-h-full min-w-full object-cover brightness-50"
       :src="getVideoUrl().toString()"
@@ -30,7 +31,11 @@ function getVideoUrl(): URL {
         <h1 class="text-5xl font-bold text-primary">
           <span class="text-secondary">Your budget,</span> but cooler
         </h1>
-        <button class="btn btn-primary mt-8">Get Started</button>
+        <RouterLink
+          :to="{ name: 'authenticate', params: { action: 'signup' } }"
+          class="btn btn-primary mt-8"
+          >Get Started</RouterLink
+        >
       </div>
     </div>
   </div>

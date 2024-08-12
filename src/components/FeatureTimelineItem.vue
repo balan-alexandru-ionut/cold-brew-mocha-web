@@ -16,8 +16,7 @@ const timelineItemClasses = computed(() => ({
 
 const implementedIconClass = computed(() => ({
   'text-secondary': props.featureTimelineItem.implemented,
-  'text-primary': !props.featureTimelineItem.implemented,
-  'fa-spin': props.featureTimelineItem.icon === faSpinner
+  'text-primary': !props.featureTimelineItem.implemented
 }))
 
 const implementedTitleClass = computed(() => ({
@@ -35,11 +34,12 @@ const implementedHrClass = computed(() => ({
   <li>
     <div class="timeline-middle mb-2 text-primary">
       <FontAwesomeIcon
+        v-if="featureTimelineItem.implemented"
         :icon="featureTimelineItem.icon"
         :class="implementedIconClass"
         class="fa-lg"
-        style="--fa-animation-duration: 3s"
       />
+      <span v-else class="loading loading-spinner loading-md"></span>
     </div>
     <div :class="timelineItemClasses" class="mb-10 mt-2 text-primary">
       <span class="font-mono italic">{{ featureTimelineItem.publishedInVersion }}</span>

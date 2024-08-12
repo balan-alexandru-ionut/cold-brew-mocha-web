@@ -1,13 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/landing/HomeView.vue'
+import LandingView from '@/views/landing/LandingView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'root',
+      redirect: '/landing'
+    },
+    {
+      path: '/landing',
+      component: LandingView,
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: HomeView
+        },
+        {
+          path: 'authenticate/:action',
+          name: 'authenticate',
+          props: true,
+          component: () => import('../views/landing/AuthenticationView.vue')
+        }
+      ]
     }
     // {
     //   path: '/about',
