@@ -4,7 +4,7 @@ defineEmits(['changeToLogin'])
 
 <template>
   <form class="w-full">
-    <div class="mb-4 flex gap-4">
+    <div class="mb-4 flex flex-col gap-4 md:flex-row-reverse">
       <input
         type="text"
         placeholder="First Name"
@@ -36,14 +36,14 @@ defineEmits(['changeToLogin'])
     </div>
   </form>
   <div class="divider mb-0"></div>
-  <div class="flex w-full content-between justify-between">
-    <button @click="$emit('changeToLogin')" class="btn btn-link text-secondary">
-      I already have an account
-    </button>
+  <div class="flex w-full flex-col content-between justify-between md:flex-row-reverse">
     <button
-      class="btn border-0 bg-base-100 text-primary drop-shadow-lg hover:bg-secondary hover:text-primary"
+      class="btn border-0 bg-base-100 text-lg text-primary drop-shadow-lg hover:bg-secondary hover:text-primary"
     >
       Sign up
+    </button>
+    <button @click="$emit('changeToLogin')" class="btn btn-link text-secondary">
+      I already have an account
     </button>
   </div>
 </template>

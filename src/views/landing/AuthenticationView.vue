@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LoginForm from '@/components/LoginForm.vue'
 import SignupForm from '@/components/SignupForm.vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const props = defineProps<{
   action: 'login' | 'signup'
@@ -24,27 +24,26 @@ function toggleAction() {
 
 <style scoped>
 .slide-fade-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.3s ease-in-out;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateX(20px);
   opacity: 0;
 }
 </style>
 
 <template>
   <div
-    class="card absolute left-1/2 top-1/2 w-2/3 -translate-x-1/2 -translate-y-1/2 bg-primary text-secondary-content"
+    class="card absolute left-1/2 top-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 bg-primary text-secondary-content md:w-2/3"
   >
     <div class="card-body items-center p-2 text-center">
       <img src="../../assets/logo.svg" class="w-16" />
-      <h2 class="card-title">{{ cardTitle }}</h2>
+      <h2 class="card-title" id="auth-card-title">{{ cardTitle }}</h2>
       <div class="divider"></div>
       <Transition name="slide-fade" mode="out-in">
         <div class="w-full" v-if="localAction === 'signup'">

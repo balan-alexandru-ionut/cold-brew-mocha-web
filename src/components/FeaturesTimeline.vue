@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import type { FeatureItem } from '@/types/FeatureItem'
+import { TimelineDisplaySide, type FeatureItem } from '@/types/FeatureItem'
 import FeatureTimelineItem from './FeatureTimelineItem.vue'
 
-defineProps<{
+const props = defineProps<{
   featureTimelineItems: Array<FeatureItem>
 }>()
+
+props.featureTimelineItems.forEach((item, index) => {
+  index % 2 === 0
+    ? (item.timelineDisplaySide = TimelineDisplaySide.start)
+    : (item.timelineDisplaySide = TimelineDisplaySide.end)
+})
 </script>
 
 <template>

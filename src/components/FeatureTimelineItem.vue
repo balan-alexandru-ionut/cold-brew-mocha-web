@@ -39,7 +39,7 @@ const implementedHrClass = computed(() => ({
         :class="implementedIconClass"
         class="fa-lg"
       />
-      <span v-else class="loading loading-spinner loading-md"></span>
+      <span v-else class="loading loading-ring loading-md"></span>
     </div>
     <div :class="timelineItemClasses" class="mb-10 mt-2 text-primary">
       <span class="font-mono italic">{{ featureTimelineItem.publishedInVersion }}</span>

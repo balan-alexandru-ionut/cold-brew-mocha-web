@@ -21,14 +21,14 @@ defineEmits(['changeToSignup'])
     </div>
   </form>
   <div class="divider mb-0"></div>
-  <div class="flex w-full content-between justify-between">
-    <button @click="$emit('changeToSignup')" class="btn btn-link text-secondary">
-      Don't have an account yet?
-    </button>
+  <div class="flex w-full flex-col content-between justify-between md:flex-row-reverse">
     <button
-      class="btn border-0 bg-base-100 text-primary drop-shadow-lg hover:bg-secondary hover:text-primary"
+      class="btn border-0 bg-base-100 text-lg text-primary drop-shadow-lg hover:bg-secondary hover:text-primary"
     >
       Login
+    </button>
+    <button @click="$emit('changeToSignup')" class="btn btn-link text-secondary">
+      Don't have an account yet?
     </button>
   </div>
 </template>

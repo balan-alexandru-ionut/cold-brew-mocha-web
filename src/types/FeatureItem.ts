@@ -11,33 +11,31 @@ export class FeatureItem {
   constructor(
     title: string,
     publishedInVersion: string,
-    timelineDisplaySide: TimelineDisplaySide,
+    timelineDisplaySide?: TimelineDisplaySide,
     implemented?: boolean,
     description?: string,
     icon?: IconDefinition
   ) {
     this.title = title
     this.publishedInVersion = publishedInVersion
-    this.timelineDisplaySide = timelineDisplaySide
+    timelineDisplaySide
+      ? (this.timelineDisplaySide = timelineDisplaySide)
+      : (this.timelineDisplaySide = TimelineDisplaySide.start)
     implemented ? (this.implemented = implemented) : (this.implemented = false)
     description ? (this.description = description) : (this.description = undefined)
     icon ? (this.icon = icon) : (this.icon = faSpinner)
   }
 
-  static builder(
-    title: string,
-    publishedInVersion: string,
-    timelineDisplaySide: TimelineDisplaySide
-  ): FeatureItemBuilder {
-    return new FeatureItemBuilder(title, publishedInVersion, timelineDisplaySide)
+  static builder(title: string, publishedInVersion: string): FeatureItemBuilder {
+    return new FeatureItemBuilder(title, publishedInVersion)
   }
 }
 
 export class FeatureItemBuilder {
   private featureItem: FeatureItem
 
-  constructor(title: string, publishedInVersion: string, timelineDisplaySide: TimelineDisplaySide) {
-    this.featureItem = new FeatureItem(title, publishedInVersion, timelineDisplaySide)
+  constructor(title: string, publishedInVersion: string) {
+    this.featureItem = new FeatureItem(title, publishedInVersion)
   }
 
   implemented(implemented: boolean): FeatureItemBuilder {
